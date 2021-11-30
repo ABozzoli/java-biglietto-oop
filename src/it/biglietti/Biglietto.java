@@ -17,7 +17,7 @@ public class Biglietto {
 	
 	// costruttori
 	public Biglietto(int km, int eta) throws Exception{
-		if(km <= 0 || eta <= 0) {
+		if(isValidKm() == false || isValidEta() == false) {
 			throw new Exception("uno dei dati è minore o uguale a zero");
 		}
 		this.km = km;
@@ -43,5 +43,22 @@ public class Biglietto {
 		BigDecimal prezzo = kilometri.multiply(COSTO_AL_KM);
 		return prezzo.subtract(prezzo.multiply(calcolaSconto()));
 	}
+	
+	// metodi validatori
+	private boolean isValidKm() {
+		if(km <= 0) {
+			return false;
+		} else {
+			return true;
+		}	
+	}
+	
+	private boolean isValidEta() {
+		if(eta <= 0 && eta > 120) {
+			return false;
+		} else {
+			return true;
+		}	
+	}	
 	
 }
