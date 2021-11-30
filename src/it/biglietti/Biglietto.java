@@ -2,6 +2,8 @@ package it.biglietti;
 
 import java.math.BigDecimal;
 
+// ROOM 3
+
 public class Biglietto {
 	
 	// costanti
@@ -14,7 +16,10 @@ public class Biglietto {
 	private int eta;
 	
 	// costruttori
-	public Biglietto(int km, int eta) {
+	public Biglietto(int km, int eta) throws Exception{
+		if(km <= 0 || eta <= 0) {
+			throw new Exception("uno dei dati è minore o uguale a zero");
+		}
 		this.km = km;
 		this.eta = eta;
 	}	
